@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Keep My Lotto — an honest lottery ticket ledger</title>
+<meta name="description" content="Keep My Lotto is a simple ledger for the lottery tickets you already bought. It checks your Powerball and Mega Millions numbers against official results and keeps your spending log. No number prediction — every combination has identical odds." />
+<meta property="og:title" content="Keep My Lotto" />
+<meta property="og:description" content="A ledger for tickets you already bought. Checks results, tracks your spend. No number prediction." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://keepmylotto.com" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231B2A38'/><text x='16' y='22' font-family='Georgia,serif' font-size='18' fill='%23B23A2E' text-anchor='middle'>K</text></svg>" />
+<style>
+  :root{
+    --paper:#FBFAF6; --paper-2:#F4F1E9; --ink:#1B2A38; --ink-2:#42566A;
+    --rule:#E4DECF; --rule-strong:#D3CBB6; --spine:#B23A2E;
+    --credit:#256A4B; --debit:#8A3A2E; --pb:#C0392B; --mb:#B8860B;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px; margin:0 auto; padding:0 22px 72px}
+
+  header{border-bottom:2px solid var(--ink); padding:34px 0 20px}
+  .mark{font-family:Georgia,"Times New Roman",serif; font-size:34px; font-weight:600; letter-spacing:-.01em}
+  .mark .k{color:var(--spine)}
+  .tagline{font-size:15px; color:var(--ink-2); margin-top:4px}
+
+  .hero{padding:44px 0 8px}
+  .hero h1{font-family:Georgia,serif; font-size:30px; line-height:1.25; font-weight:600; margin:0 0 14px; letter-spacing:-.01em}
+  .hero p{font-size:17px; color:var(--ink-2); max-width:560px; margin:0}
+  .badge{display:inline-flex; align-items:center; gap:8px; margin-top:20px; font-size:13px; color:var(--ink-2);
+    border:1px solid var(--rule-strong); border-radius:999px; padding:5px 14px; background:var(--paper-2)}
+  .badge b{color:var(--ink)}
+
+  .ledger-demo{margin:36px 0; border:1px solid var(--rule-strong); border-radius:12px; overflow:hidden; background:#fff}
+  .ld-hd{background:var(--paper-2); padding:10px 16px; border-bottom:1px solid var(--rule-strong); font-size:13px; color:var(--ink-2); display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px}
+  .ld-row{display:flex; align-items:center; gap:12px; padding:14px 16px; border-bottom:1px solid var(--rule)}
+  .ld-row:last-child{border-bottom:none}
+  .balls{display:flex; gap:6px; flex:1; flex-wrap:wrap}
+  .ball{width:30px; height:30px; border-radius:50%; border:1.5px solid var(--ink); display:flex; align-items:center; justify-content:center; font-size:13px; font-variant-numeric:tabular-nums}
+  .ball.hit{background:var(--ink); color:#fff}
+  .ball.pb{border-color:var(--pb); color:var(--pb); font-weight:600}
+  .ball.mb{border-color:var(--mb); color:var(--mb); font-weight:600}
+  .prize{font-weight:600; color:var(--credit); font-variant-numeric:tabular-nums}
+  .prize.none{color:var(--ink-2); font-weight:400; font-size:13px}
+
+  .feats{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1px; background:var(--rule-strong); border:1px solid var(--rule-strong); border-radius:12px; overflow:hidden; margin:36px 0}
+  .feat{background:var(--paper); padding:18px 20px}
+  .feat h3{font-size:15px; margin:0 0 4px; font-weight:600}
+  .feat p{font-size:13.5px; color:var(--ink-2); margin:0}
+
+  .note{background:var(--ink); color:#EDE7D8; border-radius:12px; padding:18px 20px; font-size:14px; margin:36px 0}
+  .note b{color:#fff}
+
+  footer{border-top:1px solid var(--rule-strong); padding-top:22px; font-size:13px; color:var(--ink-2)}
+  footer a{color:var(--ink)}
+  footer p{margin:6px 0}
+  .disc{font-size:12px; color:#8b8571; margin-top:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="mark"><span class="k">Keep</span> My Lotto</div>
+    <div class="tagline">A ledger for tickets you already bought.</div>
+  </header>
+
+  <section class="hero">
+    <h1>Keep your tickets.<br>Predict nothing.</h1>
+    <p>Keep My Lotto records the Powerball and Mega Millions tickets you buy, checks them against official results, and keeps a running log of what you spend. It never recommends numbers — every combination has identical odds.</p>
+    <div class="badge"><b>No number prediction.</b> No betting. No accounts.</div>
+  </section>
+
+  <div class="ledger-demo" aria-label="Example of the ledger showing a checked ticket">
+    <div class="ld-hd"><span>Powerball · 2026-07-15</span><span>Winning: 02 07 18 29 38 · PB 16</span></div>
+    <div class="ld-row">
+      <div class="balls">
+        <span class="ball hit">2</span><span class="ball hit">7</span><span class="ball">12</span><span class="ball hit">29</span><span class="ball">44</span><span class="ball pb hit">16</span>
+      </div>
+      <span class="prize">$100</span>
+    </div>
+    <div class="ld-row">
+      <div class="balls">
+        <span class="ball">4</span><span class="ball">19</span><span class="ball">33</span><span class="ball">51</span><span class="ball">60</span><span class="ball pb">8</span>
+      </div>
+      <span class="prize none">No prize</span>
+    </div>
+  </div>
+
+  <div class="feats">
+    <div class="feat"><h3>Checks results for you</h3><p>Your tickets are matched against official Powerball and Mega Millions results automatically.</p></div>
+    <div class="feat"><h3>Tracks your spending</h3><p>See total spent, total won, and your net position. Export a CSV for your records or taxes.</p></div>
+    <div class="feat"><h3>Stays on your device</h3><p>Everything you enter is stored on your phone. No account, no sign-in, nothing sent to a server.</p></div>
+    <div class="feat"><h3>Honest by design</h3><p>No "hot numbers," no picks. Just the facts — including that every combination is equally likely.</p></div>
+  </div>
+
+  <div class="note">
+    <b>A record, not a receipt.</b> Anything you enter is a personal note — it is not proof of purchase. Your physical printed ticket is the only valid proof of a win. Always verify results with the official lottery.
+  </div>
+
+  <footer>
+    <p>Coming to Google Play. Questions: <a href="mailto:support@keepmylotto.com">support@keepmylotto.com</a></p>
+    <p><a href="/privacy">Privacy policy</a></p>
+    <p class="disc">Not affiliated with, endorsed by, or connected to Powerball®, Mega Millions®, or any lottery operator; those names are used only to identify the games. For adults 18+/21+ per your state. If gambling is affecting your life, help is available in the US at 1-800-GAMBLER.</p>
+  </footer>
+</div>
+</body>
+</html>

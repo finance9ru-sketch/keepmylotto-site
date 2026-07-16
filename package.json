@@ -1,0 +1,10 @@
+{
+  "name": "keepmylotto-site",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Marketing site + privacy policy for Keep My Lotto (static, deploys on Vercel).",
+  "scripts": {
+    "dev": "npx serve .",
+    "start": "npx serve ."
+  }
+}
